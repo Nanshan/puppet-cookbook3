@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /home/ubuntu/puppet
-git pull && papply
+cd /etc/puppet
+git pull && /usr/local/bin/papply

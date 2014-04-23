@@ -11,17 +11,21 @@ class puppet{
     mode   => '0755'
   }
 
-#  file { '/home/vagrant/.ssh/id_rsa':
-#    source => 'puppet:///modules/puppet/ubuntu',
-#    owner  => 'vagrant',
-#    mode   => '0600',
-#  }
+  file { '/home/vagrant/.ssh/id_rsa':
+    source => 'puppet:///modules/puppet/ubuntu',
+    owner  => 'vagrant',
+    mode   => '0600',
+  }
+
+  file { '/tmp/hello':
+      content => template('puppet/hello'),
+    }
 
   cron { 'run-puppet':
     ensure  => 'present',
     user    => 'vagrant',
     command => '/usr/local/bin/pull-updates',
-    minute  => '*/2',
+    minute  => '*/1',
     hour    => '*',
   }
 
